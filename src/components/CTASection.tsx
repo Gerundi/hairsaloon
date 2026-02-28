@@ -15,7 +15,7 @@ const CTASection = () => {
           className="max-w-3xl mx-auto"
         >
           <h2 className="text-4xl md:text-5xl font-display font-bold text-primary-foreground mb-6 leading-tight">
-            Обратившись в TransHair Tour, вы получите профессиональную пересадку волос
+            Обратившись в MediHairTour, вы получите профессиональную пересадку волос
             <span className="text-gold"> с гарантией результата</span>
           </h2>
           <p className="text-xl text-primary-foreground/70 font-body mb-10">
@@ -29,10 +29,10 @@ const CTASection = () => {
               Рассчитать стоимость
             </a>
             <a
-              href="tel:+79181088778"
+              href="tel:+79887364100"
               className="inline-flex items-center justify-center px-10 py-5 border-2 border-primary-foreground/30 text-primary-foreground font-body font-semibold text-lg rounded-xl hover:bg-primary-foreground/10 transition-all duration-300"
             >
-              +7 (918) 108 87 78
+              +7 (988) 736 41 00
             </a>
           </div>
         </motion.div>

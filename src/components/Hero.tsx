@@ -14,7 +14,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0">
-        <img src={heroBg} alt="Клиника TransHair Tour" className="w-full h-full object-cover" />
+        <img src={heroBg} alt="Клиника MediHairTour" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" />
       </div>
 
@@ -64,11 +64,11 @@ const Hero = () => {
               Рассчитать стоимость
             </a>
             <a
-              href="tel:+79181088778"
+              href="tel:+79887364100"
               className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-primary-foreground/30 text-primary-foreground font-body font-medium rounded-lg hover:bg-primary-foreground/10 transition-all duration-300 text-lg"
             >
               <Phone className="w-5 h-5" />
-              +7 (918) 108 87 78
+              +7 (988) 736 41 00
             </a>
           </motion.div>
         </div>
@@ -95,7 +95,7 @@ const Hero = () => {
 
       {/* WhatsApp floating */}
       <a
-        href="https://api.whatsapp.com/send?phone=79181088778"
+        href="https://api.whatsapp.com/send?phone=79887364100"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-accent rounded-full flex items-center justify-center shadow-warm hover:scale-110 transition-transform"

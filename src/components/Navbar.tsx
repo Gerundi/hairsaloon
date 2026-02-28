@@ -5,6 +5,7 @@ import { Menu, X, Phone } from "lucide-react";
 const navLinks = [
   { label: "Услуги", href: "#services" },
   { label: "Результаты", href: "#results" },
+  { label: "До и после", href: "#before-after" },
   { label: "Этапы", href: "#steps" },
   { label: "Команда", href: "#team" },
   { label: "Отзывы", href: "#reviews" },
@@ -35,14 +36,11 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between h-20">
         <a href="#" className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-olive-gradient flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-lg">T</span>
+            <span className="text-primary-foreground font-display font-bold text-lg">M</span>
           </div>
           <div>
             <span className={`font-display font-bold text-lg ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
-              TRANSHAIR
-            </span>
-            <span className={`font-display font-light text-lg ml-1 ${scrolled ? "text-muted-foreground" : "text-primary-foreground/70"}`}>
-              TOUR
+              MediHairTour
             </span>
           </div>
         </a>
@@ -66,11 +64,11 @@ const Navbar = () => {
 
         <div className="hidden lg:flex items-center gap-4">
           <a
-            href="tel:+79181088778"
+            href="tel:+79887364100"
             className={`font-body text-sm font-medium ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
           >
             <Phone className="w-4 h-4 inline mr-2" />
-            +7 (918) 108 87 78
+            +7 (988) 736 41 00
           </a>
           <a
             href="#calculator"
@@ -108,7 +106,7 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="tel:+79181088778"
+              href="tel:+79887364100"
               className="mt-4 inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-body font-semibold rounded-lg"
             >
               Позвонить

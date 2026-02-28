@@ -5,13 +5,14 @@ const team = [
   {
     name: "Хакан Шахин",
     role: "Хирург-трансплантолог из Турции",
-    experience: "Стаж: более 13 лет",
+    experience: "Стаж: более 10 лет",
     desc: "Более 2 000 успешных операций. Индивидуальный подход к каждому пациенту.",
+    photo: "/team/hakan-shahin.png",
   },
   {
     name: "Юлия Чепель",
-    role: "Куратор проекта TransHair Tour",
-    experience: "Стаж: более 10 лет",
+    role: "Куратор проекта MediHairTour",
+    experience: "Стаж: более 13 лет",
     desc: "Основатель сети клиник, врач-косметолог с международной практикой.",
   },
 ];
@@ -46,11 +47,21 @@ const Team = () => {
               transition={{ duration: 0.6, delay: i * 0.2 }}
               className="bg-card rounded-3xl p-8 border border-border shadow-warm"
             >
-              <div className="w-20 h-20 rounded-full bg-olive-gradient flex items-center justify-center mb-6">
-                <span className="text-primary-foreground font-display font-bold text-2xl">
-                  {member.name[0]}
-                </span>
-              </div>
+              {member.photo ? (
+                <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-6 bg-muted">
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="w-20 h-20 rounded-full bg-olive-gradient flex items-center justify-center mb-6">
+                  <span className="text-primary-foreground font-display font-bold text-2xl">
+                    {member.name[0]}
+                  </span>
+                </div>
+              )}
               <h3 className="text-2xl font-display font-bold text-foreground mb-1">{member.name}</h3>
               <p className="text-olive font-body font-medium mb-1">{member.role}</p>
               <p className="text-gold font-body text-sm font-semibold mb-4">{member.experience}</p>

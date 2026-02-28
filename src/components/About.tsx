@@ -19,7 +19,7 @@ const About = () => {
               О клинике
             </span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight">
-              TransHair Tour —<br />
+              MediHairTour —<br />
               <span className="text-gradient">ваш путь к результату</span>
             </h2>
             <p className="text-lg text-muted-foreground font-body leading-relaxed mb-6">

@@ -28,7 +28,7 @@ const Advantages = () => {
             Почему мы
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-primary-foreground mb-4">
-            Преимущества TransHair Tour
+            Преимущества MediHairTour
           </h2>
           <p className="text-lg text-primary-foreground/70 font-body max-w-2xl mx-auto">
             Полный цикл — от диагностики до сопровождения после процедуры
