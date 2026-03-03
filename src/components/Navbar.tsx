@@ -4,8 +4,6 @@ import { Menu, X, Phone } from "lucide-react";
 
 const navLinks = [
   { label: "Услуги", href: "#services" },
-  { label: "Результаты", href: "#results" },
-  { label: "До и после", href: "#before-after" },
   { label: "Этапы", href: "#steps" },
   { label: "Команда", href: "#team" },
   { label: "Отзывы", href: "#reviews" },
@@ -29,8 +27,8 @@ const Navbar = () => {
       transition={{ duration: 0.6 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-card/95 backdrop-blur-lg shadow-warm border-b border-border"
-          : "bg-transparent"
+          ? "bg-background/95 backdrop-blur-md shadow-warm border-b border-border"
+          : "bg-background/80 backdrop-blur-md"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between h-20">
@@ -54,7 +52,7 @@ const Navbar = () => {
               className={`font-body text-sm font-medium tracking-wide uppercase transition-colors ${
                 scrolled
                   ? "text-foreground/70 hover:text-foreground"
-                  : "text-primary-foreground/80 hover:text-primary-foreground"
+                  : "text-foreground/70 hover:text-foreground"
               }`}
             >
               {link.label}
@@ -65,7 +63,7 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-4">
           <a
             href="tel:+79887364100"
-            className={`font-body text-sm font-medium ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
+            className="font-body text-sm font-medium text-foreground"
           >
             <Phone className="w-4 h-4 inline mr-2" />
             +7 (988) 736 41 00
@@ -81,7 +79,7 @@ const Navbar = () => {
         {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`lg:hidden ${scrolled ? "text-foreground" : "text-primary-foreground"}`}
+          className="lg:hidden text-foreground"
         >
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>

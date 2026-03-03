@@ -55,7 +55,7 @@ const Calculator = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-gold/15 text-gold font-body text-sm font-medium tracking-wider uppercase mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-gold/15 text-gold font-body text-sm font-medium tracking-[0.14em] uppercase mb-4">
             Скидка 5% за прохождение опроса
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">

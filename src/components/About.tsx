@@ -7,7 +7,7 @@ const About = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="py-24 bg-warm-gradient" ref={ref}>
+    <section id="about" className="py-32 bg-secondary" ref={ref}>
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -26,7 +26,7 @@ const About = () => {
               Опытные врачи проведут анализ выпадения волос, поставят диагноз и проведут лечение или пересадку с использованием лучшей аппаратуры и новейших технологий.
             </p>
             <p className="text-lg text-muted-foreground font-body leading-relaxed mb-8">
-              Наша команда высококвалифицированных специалистов-трансплантологов практикует более 10 лет. В клинике проводятся: диагностика, исследование, лечение волос.
+              Наша команда высококвалифицированных специалистов-трансплантологов практикует более 10 лет. Клиника MediHairTour принимает пациентов в двух городах — Сочи и Пятигорске.
             </p>
             <div className="flex flex-wrap gap-4">
               <div className="flex items-center gap-3 bg-card rounded-xl px-5 py-3 shadow-warm">
@@ -50,21 +50,18 @@ const About = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="bg-olive-gradient rounded-3xl p-10 text-primary-foreground">
-              <h3 className="text-2xl font-display font-bold mb-6">Что такое метод FUE?</h3>
-              <p className="font-body text-primary-foreground/85 leading-relaxed mb-4">
+            <div className="bg-card rounded-3xl p-10 text-foreground shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-border border-l-4 border-l-gold">
+              <h3 className="text-2xl font-display font-bold mb-6 text-olive-dark">Что такое метод FUE?</h3>
+              <p className="font-body text-muted-foreground leading-relaxed mb-4">
                 Трансплантация волос методом FUE — бесшовный и малоинвазивный способ решения проблемы облысения. Донорские графты добываются поштучно и пересаживаются в нужную зону.
               </p>
-              <p className="font-body text-primary-foreground/85 leading-relaxed mb-4">
+              <p className="font-body text-muted-foreground leading-relaxed mb-4">
                 Вживлённые волосяные фолликулы функционируют на новом месте в соответствии со своим обычным жизненным циклом.
               </p>
-              <p className="font-body text-primary-foreground/85 leading-relaxed">
+              <p className="font-body text-muted-foreground leading-relaxed">
                 Восстановительный период — две недели, а заметный результат — уже через полгода!
               </p>
             </div>
-            {/* Decorative */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-gold/20 rounded-full blur-2xl" />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-olive/20 rounded-full blur-3xl" />
           </motion.div>
         </div>
       </div>

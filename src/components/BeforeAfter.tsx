@@ -37,14 +37,14 @@ const BeforeAfter = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {beforeAfterImages.map((img, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className={`rounded-2xl overflow-hidden border border-border shadow-warm bg-card ${i === beforeAfterImages.length - 1 ? "max-sm:max-w-sm max-sm:mx-auto" : ""}`}
+              className="rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
             >
               <img
                 src={img.src}

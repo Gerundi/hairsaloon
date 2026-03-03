@@ -11,22 +11,17 @@ const stats = [
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img src={heroBg} alt="Клиника MediHairTour" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-primary/30" />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-6 py-32">
-        <div className="max-w-3xl">
+    <section className="relative min-h-screen flex items-center bg-background">
+      <div className="container mx-auto px-6 py-32 grid gap-12 md:grid-cols-2 items-center">
+        {/* Left: content */}
+        <div className="max-w-xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="mb-6"
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold-light font-body text-sm font-medium tracking-wider uppercase border border-gold/30">
+            <span className="inline-block px-4 py-2 rounded-full bg-secondary text-accent font-body text-sm font-medium tracking-wider uppercase border border-accent/30">
               Современная технология FUE
             </span>
           </motion.div>
@@ -35,7 +30,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-display font-bold text-primary-foreground leading-tight mb-6"
+            className="text-5xl md:text-7xl font-display font-bold text-olive-dark leading-tight mb-6"
           >
             Пересадка волос
             <br />
@@ -46,7 +41,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl md:text-2xl text-primary-foreground/80 font-body font-light mb-10 max-w-xl"
+            className="text-xl md:text-2xl text-muted-foreground font-body font-light mb-10 max-w-xl"
           >
             Лучшие специалисты из Турции. Результат, гарантированный договором.
           </motion.p>
@@ -59,13 +54,13 @@ const Hero = () => {
           >
             <a
               href="#calculator"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gold text-primary font-body font-semibold rounded-lg hover:bg-gold-light transition-all duration-300 shadow-gold text-lg"
+              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-body font-semibold rounded-full hover:bg-olive-dark transition-all duration-300 shadow-gold text-lg"
             >
               Рассчитать стоимость
             </a>
             <a
               href="tel:+79887364100"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-primary-foreground/30 text-primary-foreground font-body font-medium rounded-lg hover:bg-primary-foreground/10 transition-all duration-300 text-lg"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-accent text-accent font-body font-medium rounded-full hover:bg-accent/5 transition-all duration-300 text-lg"
             >
               <Phone className="w-5 h-5" />
               +7 (988) 736 41 00
@@ -73,19 +68,28 @@ const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Stats bar */}
+        {/* Right: image */}
+        <div className="relative h-[420px] md:h-[520px] rounded-3xl overflow-hidden shadow-warm bg-muted">
+          <img
+            src={heroBg}
+            alt="Клиника MediHairTour"
+            className="w-full h-full object-cover brightness-110"
+          />
+        </div>
+
+        {/* Stats bar (full width under content) */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-primary-foreground/10 backdrop-blur-md rounded-2xl p-6 border border-primary-foreground/10"
+          className="md:col-span-2 mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 bg-card rounded-2xl p-6 shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-border"
         >
           {stats.map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-display font-bold text-gold mb-1">
+              <div className="text-3xl md:text-4xl font-display font-bold text-primary mb-1">
                 {stat.value}
               </div>
-              <div className="text-sm text-primary-foreground/70 font-body">
+              <div className="text-sm text-muted-foreground font-body">
                 {stat.label}
               </div>
             </div>

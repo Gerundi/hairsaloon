@@ -1,28 +1,12 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-const team = [
-  {
-    name: "Хакан Шахин",
-    role: "Хирург-трансплантолог из Турции",
-    experience: "Стаж: более 10 лет",
-    desc: "Более 2 000 успешных операций. Индивидуальный подход к каждому пациенту.",
-    photo: "/team/hakan-shahin.png",
-  },
-  {
-    name: "Юлия Чепель",
-    role: "Куратор проекта MediHairTour",
-    experience: "Стаж: более 13 лет",
-    desc: "Основатель сети клиник, врач-косметолог с международной практикой.",
-  },
-];
-
 const Team = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="team" className="py-24 bg-warm-gradient" ref={ref}>
+    <section id="team" className="py-32 bg-secondary" ref={ref}>
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,44 +15,68 @@ const Team = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-olive/10 text-olive font-body text-sm font-medium tracking-wider uppercase mb-4">
-            Специалисты
+            Эксперт
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-            Наша команда
+            Доктор Хакан Шахин
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {team.map((member, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
-              className="bg-card rounded-3xl p-8 border border-border shadow-warm"
-            >
-              {member.photo ? (
-                <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-6 bg-muted">
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="w-20 h-20 rounded-full bg-olive-gradient flex items-center justify-center mb-6">
-                  <span className="text-primary-foreground font-display font-bold text-2xl">
-                    {member.name[0]}
-                  </span>
-                </div>
-              )}
-              <h3 className="text-2xl font-display font-bold text-foreground mb-1">{member.name}</h3>
-              <p className="text-olive font-body font-medium mb-1">{member.role}</p>
-              <p className="text-gold font-body text-sm font-semibold mb-4">{member.experience}</p>
-              <p className="text-muted-foreground font-body leading-relaxed">{member.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="max-w-5xl mx-auto bg-card rounded-[24px] shadow-[0_18px_60px_rgba(0,0,0,0.06)] border border-border px-6 py-8 md:px-10 md:py-10"
+        >
+          <div className="grid gap-8 md:grid-cols-2 md:items-center">
+            {/* Фото слева */}
+            <div className="order-1 md:order-none">
+              <div className="relative h-80 md:h-96 rounded-3xl overflow-hidden bg-muted">
+                <img
+                  src="/team/hakan-shahin.png"
+                  alt="Доктор Хакан Шахин"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
+            {/* Текст справа */}
+            <div className="space-y-5">
+              <p className="text-olive font-body font-medium">
+                Хирург-трансплантолог из Турции
+              </p>
+              <p className="text-muted-foreground font-body leading-relaxed">
+                Ведущий специалист клиники MediHairTour по пересадке волос. Сочетает международный опыт с внимательным и спокойным отношением к каждому пациенту.
+              </p>
+              <ul className="space-y-2 font-body text-foreground">
+                <li className="flex gap-2">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-olive-dark" />
+                  <span>10+ лет практики</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-olive-dark" />
+                  <span>Более 2 000 успешных операций</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-olive-dark" />
+                  <span>Международный опыт</span>
+                </li>
+                <li className="flex gap-2">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-olive-dark" />
+                  <span>Индивидуальный подход к каждому пациенту</span>
+                </li>
+              </ul>
+              <div className="pt-2">
+                <a
+                  href="#calculator"
+                  className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-body font-semibold rounded-full hover:bg-olive-dark transition-colors"
+                >
+                  Записаться на консультацию
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
