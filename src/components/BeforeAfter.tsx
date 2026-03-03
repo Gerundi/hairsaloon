@@ -5,6 +5,11 @@ const beforeAfterImages = [
   { src: "/before-after/1.png", alt: "Результат пересадки волос — до и после" },
   { src: "/before-after/2.png", alt: "Результат пересадки волос — до и после" },
   { src: "/before-after/3.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/4.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/5.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/6.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/7.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/8.png", alt: "Результат пересадки волос — до и после" },
 ];
 
 const BeforeAfter = () => {
@@ -31,61 +36,39 @@ const BeforeAfter = () => {
           </p>
         </motion.div>
 
-        {/* Desktop / tablet layout */}
-        <div className="hidden md:flex flex-col gap-8 max-w-4xl mx-auto">
-          {beforeAfterImages[0] && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {beforeAfterImages.slice(0, 6).map((img, i) => (
             <motion.div
+              key={i}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.5, delay: i * 0.15 }}
               className="rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
             >
               <img
-                src={beforeAfterImages[0].src}
-                alt={beforeAfterImages[0].alt}
+                src={img.src}
+                alt={img.alt}
                 className="w-full h-auto object-cover"
               />
             </motion.div>
-          )}
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            {beforeAfterImages.slice(1).map((img, i) => (
-              <motion.div
-                key={img.src}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.15 * (i + 1) }}
-                className="w-full sm:w-1/2 rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-auto object-cover"
-                />
-              </motion.div>
-            ))}
-          </div>
+          ))}
         </div>
-
-        {/* Mobile carousel */}
-        <div className="md:hidden -mx-6">
-          <div className="flex gap-4 px-6 pb-4 overflow-x-auto snap-x snap-mandatory before-after-scroll">
-            {beforeAfterImages.map((img, i) => (
-              <motion.div
-                key={img.src}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="snap-center min-w-[80%] rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-auto object-cover"
-                />
-              </motion.div>
-            ))}
-          </div>
+        <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto mt-6">
+          {beforeAfterImages.slice(6).map((img, i) => (
+            <motion.div
+              key={i + 6}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: (i + 6) * 0.15 }}
+              className="w-full sm:w-1/2 lg:w-1/3 max-w-sm rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-auto object-cover"
+              />
+            </motion.div>
+          ))}
         </div>
 
         <motion.div
