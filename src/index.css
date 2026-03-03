@@ -95,4 +95,9 @@
   .shadow-gold {
     box-shadow: 0 0 30px -5px hsl(var(--gold) / 0.3);
   }
+
+  .before-after-scroll {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
 }

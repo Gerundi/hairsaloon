@@ -37,7 +37,7 @@ const Navbar = () => {
             <span className="text-primary-foreground font-display font-bold text-lg">M</span>
           </div>
           <div>
-            <span className={`font-display font-bold text-lg ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
+            <span className="font-display font-bold text-lg text-foreground">
               MediHairTour
             </span>
           </div>
