@@ -41,6 +41,10 @@ const About = () => {
                 <div className="w-3 h-3 rounded-full bg-olive" />
                 <span className="font-body font-medium text-foreground">За 1 день</span>
               </div>
+              <div className="flex items-center gap-3 bg-card rounded-xl px-5 py-3 shadow-warm">
+                <div className="w-3 h-3 rounded-full bg-primary" />
+                <span className="font-body font-medium text-foreground">Пожизненная гарантия</span>
+              </div>
             </div>
           </motion.div>
 

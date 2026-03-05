@@ -30,7 +30,7 @@ const CTASection = () => {
             </a>
             <a
               href="tel:+79887364100"
-              className="inline-flex items-center justify-center px-10 py-5 border-2 border-primary-foreground/30 text-primary-foreground font-body font-semibold text-lg rounded-xl hover:bg-primary-foreground/10 transition-all duration-300"
+              className="inline-flex items-center justify-center px-10 py-5 border-2 border-primary-foreground/30 text-primary-foreground font-body font-semibold font-phone text-lg rounded-xl hover:bg-primary-foreground/10 transition-all duration-300"
             >
               +7 (988) 736 41 00
             </a>

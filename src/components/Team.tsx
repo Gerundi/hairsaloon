@@ -43,7 +43,7 @@ const Team = () => {
             {/* Текст справа */}
             <div className="space-y-5">
               <p className="text-olive font-body font-medium">
-                Хирург-трансплантолог из Турции
+                Трансплантолог из Турции
               </p>
               <p className="text-muted-foreground font-body leading-relaxed">
                 Ведущий специалист клиники MediHairTour по пересадке волос. Сочетает международный опыт с внимательным и спокойным отношением к каждому пациенту.

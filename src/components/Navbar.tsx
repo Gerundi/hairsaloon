@@ -31,16 +31,17 @@ const Navbar = () => {
           : "bg-background/80 backdrop-blur-md"
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between h-20">
-        <a href="#" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-olive-gradient flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-lg">M</span>
-          </div>
-          <div>
-            <span className="font-display font-bold text-lg text-foreground">
-              MediHairTour
-            </span>
-          </div>
+      <div className="container mx-auto px-6 flex items-center justify-between h-20 relative">
+        <a
+          href="#"
+          className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        >
+          <span className="font-display font-bold text-xl md:text-2xl text-foreground tracking-wide">
+            MediHairTour
+          </span>
+          <span className="text-xs md:text-sm text-muted-foreground font-body">
+            клиника пересадки волос
+          </span>
         </a>
 
         {/* Desktop */}
@@ -63,7 +64,7 @@ const Navbar = () => {
         <div className="hidden lg:flex items-center gap-4">
           <a
             href="tel:+79887364100"
-            className="font-body text-sm font-medium text-foreground"
+            className="font-body font-phone text-sm font-medium text-foreground"
           >
             <Phone className="w-4 h-4 inline mr-2" />
             +7 (988) 736 41 00

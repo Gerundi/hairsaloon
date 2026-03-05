@@ -53,17 +53,17 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 mb-16"
           >
             <a
+              href="tel:+79887364100"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-accent text-accent font-body font-medium font-phone rounded-full hover:bg-accent/5 transition-all duration-300 text-lg"
+            >
+              <Phone className="w-5 h-5" />
+              +7 (988) 736 41 00
+            </a>
+            <a
               href="#calculator"
               className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-body font-semibold rounded-full hover:bg-olive-dark transition-all duration-300 shadow-gold text-lg"
             >
               Рассчитать стоимость
-            </a>
-            <a
-              href="tel:+79887364100"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-accent text-accent font-body font-medium rounded-full hover:bg-accent/5 transition-all duration-300 text-lg"
-            >
-              <Phone className="w-5 h-5" />
-              +7 (988) 736 41 00
             </a>
           </motion.div>
         </div>
@@ -72,7 +72,7 @@ const Hero = () => {
         <div className="relative h-[420px] md:h-[520px] rounded-3xl overflow-hidden shadow-warm bg-muted">
           <img
             src={heroBg}
-            alt="Клиника MediHairTour"
+            alt="Команда клиники MediHairTour"
             className="w-full h-full object-cover brightness-110"
           />
         </div>

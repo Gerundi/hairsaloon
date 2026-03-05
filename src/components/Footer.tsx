@@ -6,12 +6,9 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-full bg-olive-gradient flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-lg">M</span>
-              </div>
+            <div className="mb-4">
               <span className="font-display font-bold text-xl text-background">
-                MEDIHAIRTOUR
+                MediHairTour
               </span>
             </div>
             <p className="text-background/60 font-body leading-relaxed">
@@ -24,13 +21,20 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-background/70 font-body">
                 <Phone className="w-4 h-4" />
-                <a href="tel:+79887364100" className="hover:text-background transition-colors">
+                <a
+                  href="tel:+79887364100"
+                  className="hover:text-background transition-colors font-phone"
+                >
                   +7 (988) 736 41 00
                 </a>
               </div>
               <div className="flex items-start gap-3 text-background/70 font-body">
                 <MapPin className="w-4 h-4 mt-1" />
-                <span>г. Сочи, ул. Коммунальная, 41Б</span>
+                <span>
+                  г. Сочи, пер. Трунова, 6, корп. 4, офис 30
+                  <br />
+                  г. Пятигорск, ул. Бунимовича, 15, корп. 2
+                </span>
               </div>
               <div className="flex items-center gap-3 text-background/70 font-body">
                 <Clock className="w-4 h-4" />
@@ -65,7 +69,7 @@ const Footer = () => {
           <p className="text-background/40 font-body text-sm">
             © 2025 MediHairTour. Все права защищены.
           </p>
-          <p className="text-background/40 font-body text-sm">
+          <p className="text-background/40 font-body text-sm font-phone">
             Запись только по телефону: +7 (988) 736 41 00
           </p>
         </div>
