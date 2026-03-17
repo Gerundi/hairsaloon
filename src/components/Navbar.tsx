@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Instagram } from "lucide-react";
+import { INSTAGRAM_URL } from "@/lib/social";
 
 const navLinks = [
   { label: "Услуги", href: "#services" },
@@ -34,13 +35,13 @@ const Navbar = () => {
       <div className="container mx-auto px-6 flex items-center justify-between h-20 relative">
         <a
           href="#"
-          className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+          className="absolute left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5"
         >
-          <span className="font-display font-bold text-xl md:text-2xl text-foreground tracking-wide">
-            MediHairTour
+          <span className="font-display font-extrabold text-xl md:text-2xl text-foreground tracking-wide">
+            Клиника пересадки волос
           </span>
-          <span className="text-xs md:text-sm text-muted-foreground font-body">
-            клиника пересадки волос
+          <span className="text-[10px] md:text-xs text-muted-foreground font-body">
+            MediHairTour
           </span>
         </a>
 
@@ -62,11 +63,22 @@ const Navbar = () => {
         </div>
 
         <div className="hidden lg:flex items-center gap-4">
+          {INSTAGRAM_URL ? (
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="inline-flex items-center justify-center text-foreground/70 hover:text-foreground transition-colors"
+            >
+              <Instagram className="w-5 h-5 text-foreground" />
+            </a>
+          ) : null}
           <a
             href="tel:+79887364100"
-            className="font-body font-phone text-sm font-medium text-foreground"
+            className="font-body font-phone text-lg font-semibold text-foreground"
           >
-            <Phone className="w-4 h-4 inline mr-2" />
+            <Phone className="w-5 h-5 inline mr-2" />
             +7 (988) 736 41 00
           </a>
           <a
@@ -104,12 +116,25 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="tel:+79887364100"
-              className="mt-4 inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-body font-semibold rounded-lg"
-            >
-              Позвонить
-            </a>
+            {INSTAGRAM_URL ? (
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-2 text-foreground/80 hover:text-foreground font-body"
+              >
+                <Instagram className="w-5 h-5" />
+                Instagram
+              </a>
+            ) : null}
+            <div className="mt-4 flex flex-col gap-3">
+              <a
+                href="tel:+79887364100"
+                className="inline-flex items-center justify-center px-6 py-3 bg-primary text-primary-foreground font-body font-semibold rounded-lg"
+              >
+                Позвонить
+              </a>
+            </div>
           </div>
         </motion.div>
       )}

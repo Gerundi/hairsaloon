@@ -11,10 +11,10 @@ const stats = [
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center bg-background">
-      <div className="container mx-auto px-6 py-32 grid gap-12 md:grid-cols-2 items-center">
+    <section className="relative min-h-screen flex items-center bg-transparent">
+      <div className="container mx-auto px-6 py-24 md:py-28 lg:py-32 grid gap-10 lg:gap-8 lg:grid-cols-2 items-center">
         {/* Left: content */}
-        <div className="max-w-xl">
+        <div className="max-w-xl lg:max-w-none min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,11 +30,13 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-display font-bold text-olive-dark leading-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-display font-bold text-olive-dark leading-[0.95] mb-6 break-words"
           >
-            Пересадка волос
+            Многопро-
             <br />
-            <span className="text-gold">в Сочи за 1 день</span>
+            фильный
+            <br />
+            <span className="text-gold">медицинский центр</span>
           </motion.h1>
 
           <motion.p
@@ -50,7 +52,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 mb-16"
+            className="flex flex-col sm:flex-row flex-wrap gap-4 mb-16"
           >
             <a
               href="tel:+79887364100"
@@ -61,19 +63,25 @@ const Hero = () => {
             </a>
             <a
               href="#calculator"
-              className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-body font-semibold rounded-full hover:bg-olive-dark transition-all duration-300 shadow-gold text-lg"
+            className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-body font-semibold rounded-full hover:bg-olive-dark transition-all duration-300 shadow-gold text-lg"
             >
               Рассчитать стоимость
+            </a>
+            <a
+              href="#calculator"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-gold bg-gold text-olive-dark font-body font-semibold rounded-full shadow-[0_0_25px_rgba(217,152,54,0.9)] text-lg animate-pulse"
+            >
+              Бесплатная консультация
             </a>
           </motion.div>
         </div>
 
         {/* Right: image */}
-        <div className="relative h-[420px] md:h-[520px] rounded-3xl overflow-hidden shadow-warm bg-muted">
+        <div className="relative h-[360px] md:h-[460px] lg:h-[520px] xl:h-[560px] rounded-3xl overflow-hidden shadow-warm bg-muted min-w-0 w-full">
           <img
             src={heroBg}
             alt="Команда клиники MediHairTour"
-            className="w-full h-full object-cover brightness-110"
+            className="w-full h-full object-cover brightness-[1.03] contrast-[1.08] saturate-[1.05]"
           />
         </div>
 

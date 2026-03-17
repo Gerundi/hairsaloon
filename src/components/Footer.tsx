@@ -1,4 +1,5 @@
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram } from "lucide-react";
+import { INSTAGRAM_URL } from "@/lib/social";
 
 const Footer = () => {
   return (
@@ -14,6 +15,19 @@ const Footer = () => {
             <p className="text-background/60 font-body leading-relaxed">
               Профессиональная пересадка волос с гарантией результата. Лучшие специалисты из Турции.
             </p>
+            {INSTAGRAM_URL ? (
+              <div className="mt-6">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-background/70 hover:text-background transition-colors font-body"
+                >
+                  <Instagram className="w-5 h-5" />
+                  Instagram
+                </a>
+              </div>
+            ) : null}
           </div>
 
           <div>
