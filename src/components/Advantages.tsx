@@ -1,13 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Shield, Award, FileCheck, Heart, Phone, DollarSign } from "lucide-react";
+import { Car, Award, FileCheck, Heart, Phone, DollarSign } from "lucide-react";
 
 const advantages = [
-  { icon: Shield, title: "Гарантия безопасности", desc: "Современная технология FUE с минимальным вмешательством" },
   { icon: Award, title: "Гарантия результата", desc: "Результат зафиксирован в официальном договоре" },
   { icon: DollarSign, title: "Фиксированная цена", desc: "Никаких скрытых платежей — всё прозрачно" },
   { icon: Heart, title: "Пакет ухода", desc: "Лекарственные препараты для восстановления включены" },
   { icon: Phone, title: "Поддержка 10 дней", desc: "Ежедневная обратная связь после процедуры" },
+  { icon: Car, title: "Трансфер от аэропорта", desc: "Встретим и доставим до клиники — комфортно и без лишних забот" },
   { icon: FileCheck, title: "Бесплатное проживание для иногородних", desc: "Организуем размещение в отеле рядом с клиникой — входит в программу лечения." },
 ];
 
