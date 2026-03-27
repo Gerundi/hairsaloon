@@ -2,12 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const videos = [
-  "https://rutube.ru/video/private/4483a3953184ff9d964b98caa9d4b5f2/?r=wd",
-  "https://rutube.ru/video/private/95e1585867bb816a1049db29f1f3bfa3/?r=wd",
-  "https://rutube.ru/video/private/24180eb72d7c9032dfbec51522e23989/?r=wd",
-  "https://rutube.ru/video/private/fff59f7f670b49a6eba232c9b881432c/?r=wd",
-  "https://rutube.ru/video/private/b543c6f24ebafe76ef0bb1961989b10f/?r=wd",
-  "https://rutube.ru/video/private/dda933bf191852a22d0d2b79060e50cc/?r=wd",
+  "/videos/Vid 1.MP4",
+  "/videos/Vid 2.MP4",
+  "/videos/Vid 3.mp4",
+  "/videos/Vid 4.mp4",
 ];
 
 const Videos = () => {
@@ -35,21 +33,43 @@ const Videos = () => {
           </p>
         </motion.div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {videos.map((src, index) => (
+        {/* First row: 2 vertical videos */}
+        <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
+          {videos.slice(0, 2).map((src, index) => (
             <motion.div
               key={src}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="rounded-3xl overflow-hidden shadow-warm bg-black/5"
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="rounded-3xl overflow-hidden shadow-warm bg-black"
             >
-              <iframe
+              <video
                 src={src}
-                title={`Видео клиента ${index + 1}`}
-                className="w-full aspect-[9/16]"
-                allow="autoplay; fullscreen; clipboard-write"
-                allowFullScreen
+                className="w-full aspect-[9/16] object-cover"
+                controls
+                playsInline
+                preload="metadata"
+              />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Second and third rows: 2 horizontal videos */}
+        <div className="mt-6 space-y-6 max-w-5xl mx-auto">
+          {videos.slice(2).map((src, index) => (
+            <motion.div
+              key={src}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: (index + 2) * 0.08 }}
+              className="rounded-3xl overflow-hidden shadow-warm bg-black"
+            >
+              <video
+                src={src}
+                className="w-full aspect-video object-cover"
+                controls
+                playsInline
+                preload="metadata"
               />
             </motion.div>
           ))}
