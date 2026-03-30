@@ -2,10 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const videos = [
-  "/videos/Vid 1.MP4",
-  "/videos/Vid 2.MP4",
-  "/videos/Vid 3.mp4",
-  "/videos/Vid 4.mp4",
+  "https://rutube.ru/play/embed/dead0451307a4796cd28108bee21e853",
+  "https://rutube.ru/play/embed/a90f4f23b4ffcd752399fd207815ce59",
+  "https://rutube.ru/play/embed/c7356f50d67cf2428844aee72b058719/?skinColor=6d4c41",
+  "https://rutube.ru/play/embed/dcfd4fa30f36a576e5779ca52b1bd826/?skinColor=6d4c41",
 ];
 
 const Videos = () => {
@@ -43,12 +43,12 @@ const Videos = () => {
               transition={{ duration: 0.4, delay: index * 0.08 }}
               className="rounded-3xl overflow-hidden shadow-warm bg-black"
             >
-              <video
+              <iframe
                 src={src}
-                className="w-full aspect-[9/16] object-cover"
-                controls
-                playsInline
-                preload="metadata"
+                title={`Видео клиента ${index + 1}`}
+                className="w-full aspect-[9/16]"
+                allow="autoplay; fullscreen; clipboard-write; encrypted-media; picture-in-picture"
+                allowFullScreen
               />
             </motion.div>
           ))}
@@ -64,12 +64,12 @@ const Videos = () => {
               transition={{ duration: 0.4, delay: (index + 2) * 0.08 }}
               className="rounded-3xl overflow-hidden shadow-warm bg-black"
             >
-              <video
+              <iframe
                 src={src}
-                className="w-full aspect-video object-cover"
-                controls
-                playsInline
-                preload="metadata"
+                title={`Видео клиента ${index + 3}`}
+                className="w-full aspect-video"
+                allow="autoplay; fullscreen; clipboard-write; encrypted-media; picture-in-picture"
+                allowFullScreen
               />
             </motion.div>
           ))}
