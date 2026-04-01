@@ -3,8 +3,8 @@ import { useRef } from "react";
 
 const videos = [
   "https://rutube.ru/play/embed/a90f4f23b4ffcd752399fd207815ce59",
-  "https://rutube.ru/play/embed/c7356f50d67cf2428844aee72b058719/?skinColor=6d4c41",
-  "https://rutube.ru/play/embed/dcfd4fa30f36a576e5779ca52b1bd826/?skinColor=6d4c41",
+  "https://rutube.ru/play/embed/c7356f50d67cf2428844aee72b058719/?skinColor=00cbff",
+  "https://rutube.ru/play/embed/dcfd4fa30f36a576e5779ca52b1bd826/?skinColor=00cbff",
 ];
 
 const Videos = () => {
