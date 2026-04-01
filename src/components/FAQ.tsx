@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "Сколько длится процедура?",
-    a: "Процедура занимает один день, независимо от объёма пересадки. Используется современная технология FUE.",
+    a: "Процедура занимает один день, независимо от объёма пересадки. Используется Sapphire FUE + авторская методика.",
   },
   {
     q: "Какой результат можно ожидать?",
@@ -61,7 +61,7 @@ const FAQ = () => {
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between bg-card rounded-xl p-6 border border-border hover:border-olive/30 transition-all duration-300 text-left"
+                className="w-full flex items-center justify-between bg-card rounded-xl p-6 border border-olive/30 hover:border-olive/40 transition-all duration-300 text-left"
               >
                 <span className="font-display text-lg font-semibold text-foreground pr-4">{faq.q}</span>
                 <ChevronDown
@@ -74,7 +74,7 @@ const FAQ = () => {
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: "auto" }}
-                  className="bg-card border border-t-0 border-border rounded-b-xl px-6 pb-6"
+                  className="bg-card border border-t-0 border-olive/30 rounded-b-xl px-6 pb-6"
                 >
                   <p className="text-muted-foreground font-body leading-relaxed pt-2">{faq.a}</p>
                 </motion.div>

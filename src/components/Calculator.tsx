@@ -99,7 +99,7 @@ const Calculator = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-card rounded-3xl p-8 md:p-12 shadow-warm border border-border"
+          className="bg-card rounded-3xl p-8 md:p-12 shadow-warm border border-olive/30"
         >
           {/* Progress */}
           <div className="flex gap-2 mb-8">
@@ -130,7 +130,7 @@ const Calculator = () => {
                   href={`https://t.me/+${CONTACT_PHONE_E164}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-5 py-3 font-body font-semibold hover:border-olive/40 transition-colors"
+                  className="inline-flex items-center justify-center rounded-xl border border-olive/30 bg-background px-5 py-3 font-body font-semibold hover:border-olive/40 transition-colors"
                   onClick={() => {
                     navigator.clipboard?.writeText(buildMessage()).catch(() => undefined);
                   }}
@@ -141,7 +141,7 @@ const Calculator = () => {
                   href={`https://wa.me/${CONTACT_PHONE_E164}?text=${encodeURIComponent(buildMessage())}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-5 py-3 font-body font-semibold hover:border-olive/40 transition-colors"
+                  className="inline-flex items-center justify-center rounded-xl border border-olive/30 bg-background px-5 py-3 font-body font-semibold hover:border-olive/40 transition-colors"
                 >
                   WhatsApp
                 </a>
@@ -155,7 +155,7 @@ const Calculator = () => {
                       window.open("https://max.ru/", "_blank", "noreferrer");
                     }
                   }}
-                  className="inline-flex items-center justify-center rounded-xl border border-border bg-background px-5 py-3 font-body font-semibold hover:border-olive/40 transition-colors"
+                  className="inline-flex items-center justify-center rounded-xl border border-olive/30 bg-background px-5 py-3 font-body font-semibold hover:border-olive/40 transition-colors"
                 >
                   Max
                 </button>
@@ -181,7 +181,7 @@ const Calculator = () => {
                     className={`p-4 rounded-xl border text-left font-body font-medium transition-all duration-300 ${
                       answers[questions[step].key] === opt
                         ? "bg-olive text-primary-foreground border-olive"
-                        : "bg-background border-border hover:border-olive/40 text-foreground"
+                        : "bg-background border-olive/30 hover:border-olive/40 text-foreground"
                     }`}
                   >
                     {opt}
@@ -208,7 +208,7 @@ const Calculator = () => {
                   if (!phone.startsWith(phonePrefix)) setPhone(phonePrefix);
                 }}
                 placeholder="+7 (___) ___ __ __"
-                className="w-full px-5 py-4 rounded-xl border border-border bg-background font-body font-phone text-foreground text-lg focus:outline-none focus:ring-2 focus:ring-olive/30 mb-4"
+                className="w-full px-5 py-4 rounded-xl border border-olive/30 bg-background font-body font-phone text-foreground text-lg focus:outline-none focus:ring-2 focus:ring-olive/30 mb-4"
                 required
               />
               <button

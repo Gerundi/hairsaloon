@@ -10,6 +10,16 @@ const beforeAfterImages = [
   { src: "/before-after/6.png", alt: "Результат пересадки волос — до и после" },
   { src: "/before-after/7.png", alt: "Результат пересадки волос — до и после" },
   { src: "/before-after/8.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/9.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/10.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/12.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/13.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/14.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/15.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/16.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/17.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/18.png", alt: "Результат пересадки волос — до и после" },
+  { src: "/before-after/19.png", alt: "Результат пересадки волос — до и после" },
 ];
 
 const BeforeAfter = () => {
@@ -38,31 +48,14 @@ const BeforeAfter = () => {
 
         {/* Desktop / tablet layout */}
         <div className="hidden md:block">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {beforeAfterImages.slice(0, 6).map((img, i) => (
+          <div className="grid grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {beforeAfterImages.map((img, i) => (
               <motion.div
-                key={i}
+                key={img.src}
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
-              >
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-auto object-cover"
-                />
-              </motion.div>
-            ))}
-          </div>
-          <div className="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto mt-6">
-            {beforeAfterImages.slice(6).map((img, i) => (
-              <motion.div
-                key={i + 6}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: (i + 6) * 0.15 }}
-                className="w-full sm:w-1/2 lg:w-1/3 max-w-sm rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
               >
                 <img
                   src={img.src}
