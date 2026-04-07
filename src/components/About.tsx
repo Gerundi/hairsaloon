@@ -34,6 +34,10 @@ const About = () => {
                 <span className="font-body font-medium text-foreground">Метод FUE</span>
               </div>
               <div className="flex items-center gap-3 bg-card rounded-xl px-5 py-3 shadow-warm">
+                <div className="w-3 h-3 rounded-full bg-accent" />
+                <span className="font-body font-medium text-foreground">Метод DHI</span>
+              </div>
+              <div className="flex items-center gap-3 bg-card rounded-xl px-5 py-3 shadow-warm">
                 <div className="w-3 h-3 rounded-full bg-gold" />
                 <span className="font-body font-medium text-foreground">Без шрамов</span>
               </div>

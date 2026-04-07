@@ -51,11 +51,11 @@ const Team = () => {
               <ul className="space-y-2 font-body text-foreground">
                 <li className="flex gap-2">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-olive-dark" />
-                  <span>10+ лет практики</span>
+                  <span>Стаж более 18 лет</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-olive-dark" />
-                  <span>Более 2 000 успешных операций</span>
+                  <span>Более 15000 тысяч операций</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-olive-dark" />
