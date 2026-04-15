@@ -9,13 +9,23 @@ const siteContentSchema = z.record(z.unknown());
 export const contentRouter = Router();
 
 contentRouter.get("/content", async (_req, res) => {
-  const content = await getContent();
-  return res.json(content);
+  try {
+    const content = await getContent();
+    return res.json(content);
+  } catch (error) {
+    console.error("Failed to load public content", error);
+    return res.status(500).json({ error: "Failed to load content" });
+  }
 });
 
 contentRouter.get("/admin/content", requireAdmin, async (_req, res) => {
-  const content = await getContent();
-  return res.json(content);
+  try {
+    const content = await getContent();
+    return res.json(content);
+  } catch (error) {
+    console.error("Failed to load admin content", error);
+    return res.status(500).json({ error: "Failed to load content" });
+  }
 });
 
 contentRouter.put("/admin/content", requireAdmin, requireCsrf, async (req, res) => {
@@ -27,7 +37,12 @@ contentRouter.put("/admin/content", requireAdmin, requireCsrf, async (req, res) 
     });
   }
 
-  const saved = await updateContent(parsed.data);
-  return res.json(saved);
+  try {
+    const saved = await updateContent(parsed.data);
+    return res.json(saved);
+  } catch (error) {
+    console.error("Failed to save admin content", error);
+    return res.status(500).json({ error: "Failed to save content" });
+  }
 });
 

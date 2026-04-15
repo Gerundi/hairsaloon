@@ -17,6 +17,23 @@
    - site: `http://localhost:8080`
    - admin: `http://localhost:8080/admin`
 
+### Vercel + Supabase (recommended)
+
+1. Create a Supabase project.
+2. Run SQL in Supabase SQL editor:
+   - `create table if not exists public.site_content (id int primary key, content_json jsonb not null, updated_at timestamptz not null default now());`
+   - `insert into public.site_content (id, content_json) values (1, '{}'::jsonb) on conflict (id) do nothing;`
+3. In Vercel project settings, add env vars:
+   - `NODE_ENV=production`
+   - `FRONTEND_ORIGIN=https://<your-vercel-domain>`
+   - `SESSION_SECRET=<long-random-secret>`
+   - `ADMIN_LOGIN=<admin-login>`
+   - `ADMIN_PASSWORD_HASH=<bcrypt-hash>`
+   - `SUPABASE_URL=<from-supabase-project-settings>`
+   - `SUPABASE_SERVICE_ROLE_KEY=<service-role-key>`
+   - optional: `SUPABASE_CONTENT_TABLE=site_content`
+4. Deploy to Vercel from this repo.
+
 ### Backend endpoints
 
 - Public:
@@ -40,7 +57,7 @@
 - Set strong random `SESSION_SECRET`
 - Set `ADMIN_LOGIN` and `ADMIN_PASSWORD_HASH` (bcrypt hash only)
 - Set `FRONTEND_ORIGIN` to your real domain (or comma-separated domains)
-- Set `REDIS_URL` (required in production)
+- Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`
 - Run behind HTTPS (secure cookie is enabled in production)
 
 

@@ -1,7 +1,13 @@
 import { Router } from "express";
 import rateLimit from "express-rate-limit";
 import bcrypt from "bcryptjs";
-import crypto from "node:crypto";
+import {
+  clearAdminSessionCookie,
+  createAdminSessionToken,
+  readAdminSession,
+  readAdminSessionFromToken,
+  setAdminSessionCookie,
+} from "../auth-token";
 
 const ADMIN_LOGIN = process.env.ADMIN_LOGIN;
 const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH;
@@ -33,29 +39,31 @@ authRouter.post("/login", loginLimiter, async (req, res) => {
     return res.status(401).json({ error: "Invalid credentials" });
   }
 
-  req.session.isAdmin = true;
-  req.session.adminLogin = login;
-  req.session.csrfToken = crypto.randomUUID();
+  const token = createAdminSessionToken(login);
+  const session = readAdminSessionFromToken(token);
+  if (!session) {
+    return res.status(500).json({ error: "Failed to create session" });
+  }
 
-  return res.json({ ok: true, login, csrfToken: req.session.csrfToken });
+  setAdminSessionCookie(res, token);
+  return res.json({ ok: true, login, csrfToken: session.csrfToken });
 });
 
-authRouter.post("/logout", (req, res) => {
-  req.session.destroy(() => {
-    res.clearCookie("admin.sid");
-    res.json({ ok: true });
-  });
+authRouter.post("/logout", (_req, res) => {
+  clearAdminSessionCookie(res);
+  res.json({ ok: true });
 });
 
 authRouter.get("/session", (req, res) => {
-  if (!req.session.isAdmin) {
+  const session = readAdminSession(req);
+  if (!session) {
     return res.status(401).json({ authenticated: false });
   }
 
   return res.json({
     authenticated: true,
-    login: req.session.adminLogin ?? ADMIN_LOGIN,
-    csrfToken: req.session.csrfToken,
+    login: session.login ?? ADMIN_LOGIN,
+    csrfToken: session.csrfToken,
   });
 });
 

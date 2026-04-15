@@ -1,16 +1,11 @@
-import os from "node:os";
-import path from "node:path";
 import request from "supertest";
 import bcrypt from "bcryptjs";
 import { beforeAll, describe, expect, it } from "vitest";
 
 let app: Awaited<ReturnType<typeof import("./app").createApp>>;
-let dbPath: string;
 
 describe("admin auth and content flow", () => {
   beforeAll(async () => {
-    dbPath = path.join(os.tmpdir(), `hairsaloon-test-${Date.now()}.db`);
-    process.env.DB_PATH = dbPath;
     process.env.SESSION_SECRET = "test-secret";
     process.env.ADMIN_LOGIN = "admin";
     process.env.ADMIN_PASSWORD_HASH = await bcrypt.hash("password123", 10);

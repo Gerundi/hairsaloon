@@ -1,10 +1,10 @@
-import "express-session";
-
-declare module "express-session" {
-  interface SessionData {
-    isAdmin?: boolean;
-    adminLogin?: string;
-    csrfToken?: string;
+declare namespace Express {
+  interface Request {
+    adminSession?: {
+      login: string;
+      csrfToken: string;
+      exp: number;
+    };
   }
 }
 
