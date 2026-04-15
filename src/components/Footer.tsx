@@ -1,7 +1,9 @@
 import { MapPin, Phone, Clock, Instagram } from "lucide-react";
-import { INSTAGRAM_URL } from "@/lib/social";
+import { useSiteContent } from "@/contexts/SiteContentContext";
 
 const Footer = () => {
+  const { content } = useSiteContent();
+  const instagramUrl = content.footer.instagramUrl;
   return (
     <footer className="bg-foreground py-16">
       <div className="container mx-auto px-6">
@@ -9,16 +11,16 @@ const Footer = () => {
           <div>
             <div className="mb-4">
               <span className="font-display font-bold text-xl text-background">
-                MediHairTour
+                {content.footer.brandName}
               </span>
             </div>
             <p className="text-background/60 font-body leading-relaxed">
-              Профессиональная пересадка волос с гарантией результата. Лучшие специалисты из Турции.
+              {content.footer.description}
             </p>
-            {INSTAGRAM_URL ? (
+            {instagramUrl ? (
               <div className="mt-6">
                 <a
-                  href={INSTAGRAM_URL}
+                  href={instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-background/70 hover:text-background transition-colors font-body"
@@ -31,42 +33,39 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-background text-lg mb-4">Контакты</h4>
+            <h4 className="font-display font-bold text-background text-lg mb-4">{content.footer.contactsTitle}</h4>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-background/70 font-body">
                 <Phone className="w-4 h-4" />
                 <a
-                  href="tel:+79887364100"
+                  href={content.footer.phoneHref}
                   className="hover:text-background transition-colors font-phone"
                 >
-                  +7 (988) 736 41 00
+                  {content.footer.phoneText}
                 </a>
               </div>
               <div className="flex items-start gap-3 text-background/70 font-body">
                 <MapPin className="w-4 h-4 mt-1" />
                 <span>
-                  г. Сочи, пер. Трунова, 6, корп. 4, офис 30
-                  <br />
-                  г. Пятигорск, ул. Бунимовича, 15, корп. 2
+                  {content.footer.address.split("\n").map((line, index) => (
+                    <span key={index}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
                 </span>
               </div>
               <div className="flex items-center gap-3 text-background/70 font-body">
                 <Clock className="w-4 h-4" />
-                <span>Пн-Вс: 9:00 - 20:00</span>
+                <span>{content.footer.hours}</span>
               </div>
             </div>
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-background text-lg mb-4">Навигация</h4>
+            <h4 className="font-display font-bold text-background text-lg mb-4">{content.footer.navigationTitle}</h4>
             <div className="space-y-2">
-              {[
-                { label: "Услуги", href: "#services" },
-                { label: "Этапы", href: "#steps" },
-                { label: "Команда", href: "#team" },
-                { label: "Отзывы", href: "#reviews" },
-                { label: "FAQ", href: "#faq" },
-              ].map((link) => (
+              {content.footer.navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -81,10 +80,10 @@ const Footer = () => {
 
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-background/40 font-body text-sm">
-            © 2025 MediHairTour. Все права защищены.
+            {content.footer.copyright}
           </p>
           <p className="text-background/40 font-body text-sm font-phone">
-            Запись только по телефону: +7 (988) 736 41 00
+            {content.footer.bookingText}
           </p>
         </div>
       </div>

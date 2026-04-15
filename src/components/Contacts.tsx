@@ -1,10 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Phone } from "lucide-react";
+import { useSiteContent } from "@/contexts/SiteContentContext";
+import { EditableLink, EditableText } from "@/components/editor/Editable";
 
 const Contacts = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { content } = useSiteContent();
 
   return (
     <section
@@ -20,41 +23,39 @@ const Contacts = () => {
           className="space-y-6"
         >
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-            Контакты клиник
+            <EditableText path="contacts.title" as="span" value={content.contacts.title} />
           </h2>
           <div className="space-y-6">
             <h3 className="text-2xl font-display font-semibold text-foreground">
-              Сочи
+              <EditableText path="contacts.city1Name" as="span" value={content.contacts.city1Name} />
             </h3>
             <p className="text-muted-foreground font-body leading-relaxed">
-              354000, Краснодарский край, г. Сочи,
-              <br />
-              пер. Трунова, 6, корп. 4
+              <EditableText path="contacts.city1Address" as="span" value={content.contacts.city1Address} className="whitespace-pre-line" />
             </p>
             <div className="space-y-3">
               <h3 className="text-2xl font-display font-semibold text-foreground">
-                Пятигорск
+                <EditableText path="contacts.city2Name" as="span" value={content.contacts.city2Name} />
               </h3>
               <p className="text-muted-foreground font-body leading-relaxed">
-                357500, Ставропольский край, г. Пятигорск,
-                <br />
-                ул. Бунимовича, 15, корп. 2
+                <EditableText path="contacts.city2Address" as="span" value={content.contacts.city2Address} className="whitespace-pre-line" />
               </p>
             </div>
             <div className="pt-2 flex flex-col sm:flex-row flex-wrap gap-4">
-              <a
-                href="tel:+79887364100"
+              <EditableLink
+                path="contacts.phoneHref"
+                href={content.contacts.phoneHref}
                 className="inline-flex items-center justify-center gap-3 px-8 py-4 border border-accent text-accent font-body font-medium font-phone rounded-full hover:bg-accent/5 transition-all duration-300 text-lg"
               >
                 <Phone className="w-5 h-5" />
-                +7 (988) 736 41 00
-              </a>
-              <a
-                href="#calculator"
+                <EditableText path="contacts.phoneText" as="span" value={content.contacts.phoneText} />
+              </EditableLink>
+              <EditableLink
+                path="contacts.ctaHref"
+                href={content.contacts.ctaHref}
                 className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground font-body font-semibold rounded-full hover:bg-olive-dark transition-all duration-300 shadow-gold text-lg"
               >
-                Заказать звонок
-              </a>
+                <EditableText path="contacts.ctaText" as="span" value={content.contacts.ctaText} />
+              </EditableLink>
             </div>
           </div>
         </motion.div>
@@ -66,7 +67,7 @@ const Contacts = () => {
           className="w-full h-[320px] md:h-[420px] rounded-3xl overflow-hidden shadow-warm border border-border"
         >
           <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=39.733509%2C43.593850&z=18&pt=39.733509,43.593850,pm2dgl"
+            src={content.contacts.mapEmbedSrc}
             width="100%"
             height="100%"
             style={{ border: 0 }}

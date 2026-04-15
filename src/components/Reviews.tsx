@@ -1,28 +1,14 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Star } from "lucide-react";
-
-const reviews = [
-  {
-    name: "Алексей М.",
-    text: "Отличный результат! Пересадка прошла безболезненно, а через 6 месяцев волосы полностью прижились. Рекомендую!",
-    rating: 5,
-  },
-  {
-    name: "Ирина К.",
-    text: "Очень довольна работой клиники. Профессиональный подход, всё объяснили на консультации. Результат превзошёл ожидания.",
-    rating: 5,
-  },
-  {
-    name: "Дмитрий С.",
-    text: "Делал пересадку бороды. Результат — натуральный и густой. Спасибо команде MediHairTour за высочайший профессионализм!",
-    rating: 5,
-  },
-];
+import { useSiteContent } from "@/contexts/SiteContentContext";
+import { EditableText } from "@/components/editor/Editable";
 
 const Reviews = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { content } = useSiteContent();
+  const reviews = content.reviews.items;
 
   return (
     <section id="reviews" className="py-24 bg-background" ref={ref}>
@@ -33,16 +19,19 @@ const Reviews = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-olive/10 text-olive font-body text-sm font-medium tracking-wider uppercase mb-4">
-            Отзывы
-          </span>
+          <EditableText
+            path="reviews.sectionLabel"
+            as="span"
+            value={content.reviews.sectionLabel}
+            className="inline-block px-4 py-1.5 rounded-full bg-olive/10 text-olive font-body text-sm font-medium tracking-wider uppercase mb-4"
+          />
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-            Что говорят наши клиенты
+            <EditableText path="reviews.title" as="span" value={content.reviews.title} />
           </h2>
           <div className="inline-flex items-center gap-2 bg-card rounded-full px-6 py-3 border border-border shadow-warm">
-            <span className="font-body font-bold text-foreground text-lg">Яндекс</span>
+            <EditableText path="reviews.ratingSource" as="span" value={content.reviews.ratingSource} className="font-body font-bold text-foreground text-lg" />
             <Star className="w-5 h-5 text-gold fill-gold" />
-            <span className="font-body font-bold text-foreground text-lg">4.9</span>
+            <EditableText path="reviews.ratingValue" as="span" value={content.reviews.ratingValue} className="font-body font-bold text-foreground text-lg" />
           </div>
         </motion.div>
 
@@ -60,8 +49,10 @@ const Reviews = () => {
                   <Star key={j} className="w-5 h-5 text-gold fill-gold" />
                 ))}
               </div>
-              <p className="text-foreground font-body leading-relaxed mb-6">«{review.text}»</p>
-              <p className="text-olive font-body font-semibold">{review.name}</p>
+              <p className="text-foreground font-body leading-relaxed mb-6">«<EditableText path={`reviews.items.${i}.text`} as="span" value={review.text} />»</p>
+              <p className="text-olive font-body font-semibold">
+                <EditableText path={`reviews.items.${i}.name`} as="span" value={review.name} />
+              </p>
             </motion.div>
           ))}
         </div>

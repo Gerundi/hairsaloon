@@ -1,12 +1,11 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-
-const CONTACT_PHONE_DISPLAY = "+7 (988) 736 41 00";
-const CONTACT_PHONE_E164 = "79887364100";
+import { useSiteContent } from "@/contexts/SiteContentContext";
 
 const Calculator = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { content } = useSiteContent();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const phonePrefix = "+7 ";
@@ -22,14 +21,14 @@ const Calculator = () => {
 
   const buildMessage = () => {
     const parts: string[] = [];
-    parts.push("Здравствуйте! Хочу консультацию по пересадке волос.");
+    parts.push(content.calculator.introMessage);
     parts.push("");
 
     const entries = Object.entries(answers).filter(
       ([, v]) => typeof v === "string" && v.trim().length > 0,
     );
     if (entries.length) {
-      parts.push("Ответы теста:");
+      parts.push(content.calculator.answerListTitle);
       for (const [k, v] of entries) {
         parts.push(`- ${answerLabels[k] ?? k}: ${v}`);
       }
@@ -40,28 +39,7 @@ const Calculator = () => {
     return parts.join("\n");
   };
 
-  const questions = [
-    {
-      key: "zone",
-      title: "На какую зону вы хотите пересадить волосы?",
-      options: ["Голова", "Борода", "Брови", "Шрамы"],
-    },
-    {
-      key: "gender",
-      title: "Укажите ваш пол",
-      options: ["Мужчина", "Женщина"],
-    },
-    {
-      key: "previous",
-      title: "Проводилось ли ранее хирургическое восстановление волос?",
-      options: ["Да, проводилось", "Нет, не проводилось", "Не помню"],
-    },
-    {
-      key: "city",
-      title: "В каком городе удобнее посетить консультацию?",
-      options: ["Сочи", "Пятигорск", "Севастополь", "Другой"],
-    },
-  ];
+  const questions = content.calculator.questions;
 
   const handleSelect = (key: string, value: string) => {
     setAnswers({ ...answers, [key]: value });
@@ -87,12 +65,12 @@ const Calculator = () => {
           className="text-center mb-12"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-gold/15 text-gold font-body text-sm font-medium tracking-[0.14em] uppercase mb-4">
-            Скидка 5% за прохождение опроса
+            {content.calculator.sectionBadge}
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-4">
-            Рассчитаем стоимость
+            {content.calculator.title}
           </h2>
-          <p className="text-lg text-muted-foreground font-body">за 15 минут</p>
+          <p className="text-lg text-muted-foreground font-body">{content.calculator.subtitle}</p>
         </motion.div>
 
         <motion.div
@@ -119,15 +97,15 @@ const Calculator = () => {
                 <span className="text-3xl">✓</span>
               </div>
               <h3 className="text-2xl font-display font-bold text-foreground mb-2">
-                Готово! Напишите нам
+                {content.calculator.finalTitle}
               </h3>
               <p className="text-muted-foreground font-body mb-6">
-                Выберите мессенджер — сообщение с вашими ответами уже подготовлено.
+                {content.calculator.finalDescription}
               </p>
 
               <div className="grid gap-3 sm:grid-cols-3">
                 <a
-                  href={`https://t.me/+${CONTACT_PHONE_E164}`}
+                  href={`https://t.me/+${content.calculator.phoneE164}`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-xl border border-olive/30 bg-background px-5 py-3 font-body font-semibold hover:border-olive/40 transition-colors"
@@ -135,37 +113,37 @@ const Calculator = () => {
                     navigator.clipboard?.writeText(buildMessage()).catch(() => undefined);
                   }}
                 >
-                  Telegram
+                  {content.calculator.telegramText}
                 </a>
                 <a
-                  href={`https://wa.me/${CONTACT_PHONE_E164}?text=${encodeURIComponent(buildMessage())}`}
+                  href={`https://wa.me/${content.calculator.phoneE164}?text=${encodeURIComponent(buildMessage())}`}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-xl border border-olive/30 bg-background px-5 py-3 font-body font-semibold hover:border-olive/40 transition-colors"
                 >
-                  WhatsApp
+                  {content.calculator.whatsappText}
                 </a>
                 <button
                   type="button"
                   onClick={async () => {
                     try {
                       await navigator.clipboard.writeText(buildMessage());
-                      window.open("https://max.ru/", "_blank", "noreferrer");
+                      window.open(content.calculator.maxUrl, "_blank", "noreferrer");
                     } catch {
-                      window.open("https://max.ru/", "_blank", "noreferrer");
+                      window.open(content.calculator.maxUrl, "_blank", "noreferrer");
                     }
                   }}
                   className="inline-flex items-center justify-center rounded-xl border border-olive/30 bg-background px-5 py-3 font-body font-semibold hover:border-olive/40 transition-colors"
                 >
-                  Max
+                  {content.calculator.maxText}
                 </button>
               </div>
 
               <p className="text-xs text-muted-foreground font-body mt-4">
-                Контактный номер: <span className="font-phone">{CONTACT_PHONE_DISPLAY}</span>
+                {content.calculator.phoneCaption} <span className="font-phone">{content.calculator.phoneDisplay}</span>
               </p>
               <p className="text-xs text-muted-foreground font-body mt-2">
-                Для Telegram и Max мы автоматически копируем текст — просто вставь его в чат.
+                {content.calculator.messengerHint}
               </p>
             </div>
           ) : step < questions.length ? (
@@ -195,7 +173,7 @@ const Calculator = () => {
           ) : (
             <form onSubmit={handleSubmit}>
               <h3 className="text-xl font-display font-semibold text-foreground mb-6">
-                Готово! Оставьте номер телефона для связи
+                {content.calculator.finalFormTitle}
               </h3>
               <input
                 type="tel"
@@ -215,10 +193,10 @@ const Calculator = () => {
                 type="submit"
                 className="w-full py-4 bg-gold text-primary font-body font-bold text-lg rounded-xl hover:bg-gold-light transition-colors shadow-gold"
               >
-                Узнать результат
+                {content.calculator.finalFormButton}
               </button>
               <p className="text-xs text-muted-foreground font-body mt-4 text-center">
-                Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
+                {content.calculator.privacyText}
               </p>
             </form>
           )}

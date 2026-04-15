@@ -1,38 +1,15 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { ChevronDown } from "lucide-react";
-
-const faqs = [
-  {
-    q: "Как проходит консультация?",
-    a: "Консультация проводится в двух форматах: офлайн в клинике или онлайн по фото/видео для иногородних. Обсуждаются этапы процедуры, предполагаемое количество графтов и цена.",
-  },
-  {
-    q: "Есть ли гарантия?",
-    a: "Да, мы предоставляем официальную гарантию результата, прописанную в договоре. Мы отвечаем за качество пересадки, приживаемость и итоговый результат.",
-  },
-  {
-    q: "С какими зонами вы работаете?",
-    a: "Мы специализируемся на пересадке волос у мужчин и женщин, а также на восстановлении бровей и формировании бороды с естественным результатом.",
-  },
-  {
-    q: "Что входит в стоимость?",
-    a: "В стоимость включены консультация, индивидуальный план трансплантации, проведение процедуры и послеоперационное сопровождение. Итоговая цена фиксируется в договоре до начала лечения — без скрытых платежей.",
-  },
-  {
-    q: "Сколько длится процедура?",
-    a: "Процедура занимает один день, независимо от объёма пересадки. Используется Sapphire FUE + авторская методика.",
-  },
-  {
-    q: "Какой результат можно ожидать?",
-    a: "Клиника гарантирует приживаемость до 98%. Результат зафиксирован в официальном договоре.",
-  },
-];
+import { useSiteContent } from "@/contexts/SiteContentContext";
+import { EditableText } from "@/components/editor/Editable";
 
 const FAQ = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [open, setOpen] = useState<number | null>(null);
+  const { content } = useSiteContent();
+  const faqs = content.faq.items;
 
   return (
     <section id="faq" className="py-24 bg-background" ref={ref}>
@@ -43,11 +20,14 @@ const FAQ = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-olive/10 text-olive font-body text-sm font-medium tracking-wider uppercase mb-4">
-            Вопросы
-          </span>
+          <EditableText
+            path="faq.sectionLabel"
+            as="span"
+            value={content.faq.sectionLabel}
+            className="inline-block px-4 py-1.5 rounded-full bg-olive/10 text-olive font-body text-sm font-medium tracking-wider uppercase mb-4"
+          />
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-            Ответы на вопросы
+            <EditableText path="faq.title" as="span" value={content.faq.title} />
           </h2>
         </motion.div>
 
@@ -63,7 +43,9 @@ const FAQ = () => {
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between bg-card rounded-xl p-6 border border-olive/30 hover:border-olive/40 transition-all duration-300 text-left"
               >
-                <span className="font-display text-lg font-semibold text-foreground pr-4">{faq.q}</span>
+                <span className="font-display text-lg font-semibold text-foreground pr-4">
+                  <EditableText path={`faq.items.${i}.q`} as="span" value={faq.q} />
+                </span>
                 <ChevronDown
                   className={`w-5 h-5 text-olive shrink-0 transition-transform duration-300 ${
                     open === i ? "rotate-180" : ""
@@ -76,7 +58,9 @@ const FAQ = () => {
                   animate={{ opacity: 1, height: "auto" }}
                   className="bg-card border border-t-0 border-olive/30 rounded-b-xl px-6 pb-6"
                 >
-                  <p className="text-muted-foreground font-body leading-relaxed pt-2">{faq.a}</p>
+                  <p className="text-muted-foreground font-body leading-relaxed pt-2">
+                    <EditableText path={`faq.items.${i}.a`} as="span" value={faq.a} />
+                  </p>
                 </motion.div>
               )}
             </motion.div>

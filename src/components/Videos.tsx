@@ -1,15 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
-const videos = [
-  "https://rutube.ru/play/embed/a90f4f23b4ffcd752399fd207815ce59",
-  "https://rutube.ru/play/embed/c7356f50d67cf2428844aee72b058719/?skinColor=00cbff",
-  "https://rutube.ru/play/embed/dcfd4fa30f36a576e5779ca52b1bd826/?skinColor=00cbff",
-];
+import { useSiteContent } from "@/contexts/SiteContentContext";
+import { EditableLink, EditableText } from "@/components/editor/Editable";
 
 const Videos = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { content } = useSiteContent();
+  const videos = content.videos.embeds;
 
   return (
     <section
@@ -25,18 +23,23 @@ const Videos = () => {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-3">
-            Видео от наших клиентов
+            <EditableText path="videos.title" as="span" value={content.videos.title} />
           </h2>
           <p className="text-muted-foreground font-body max-w-2xl mx-auto">
-            Реальные истории пациентов о пересадке волос и результате лечения.
+            <EditableText path="videos.subtitle" as="span" value={content.videos.subtitle} />
           </p>
         </motion.div>
 
         {/* First row: 2 vertical videos */}
         <div className="grid gap-6 md:grid-cols-2 max-w-5xl mx-auto">
           {videos.slice(0, 2).map((src, index) => (
-            <motion.div
+            <EditableLink
               key={src}
+              path={`videos.embeds.${index}`}
+              href={src}
+              onClick={(event) => event.preventDefault()}
+            >
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: index * 0.08 }}
@@ -50,14 +53,20 @@ const Videos = () => {
                 allowFullScreen
               />
             </motion.div>
+            </EditableLink>
           ))}
         </div>
 
         {/* Second and third rows: 2 horizontal videos */}
         <div className="mt-6 space-y-6 max-w-5xl mx-auto">
           {videos.slice(2).map((src, index) => (
-            <motion.div
+            <EditableLink
               key={src}
+              path={`videos.embeds.${index + 2}`}
+              href={src}
+              onClick={(event) => event.preventDefault()}
+            >
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: (index + 2) * 0.08 }}
@@ -71,6 +80,7 @@ const Videos = () => {
                 allowFullScreen
               />
             </motion.div>
+            </EditableLink>
           ))}
         </div>
       </div>

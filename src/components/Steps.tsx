@@ -1,17 +1,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-
-const steps = [
-  { num: "01", title: "Консультация", desc: "Онлайн или в клинике с хирургом-трансплантологом" },
-  { num: "02", title: "Сбор анамнеза", desc: "Осмотр, диагностика и составление плана" },
-  { num: "03", title: "Выбор даты", desc: "Подбираем удобную дату для процедуры" },
-  { num: "04", title: "Пересадка волос", desc: "Процедура за 1 день по технологии FUE или DHI" },
-  { num: "05", title: "Реабилитация", desc: "Рекомендации, пакет ухода и наблюдение 10 дней" },
-];
+import { useSiteContent } from "@/contexts/SiteContentContext";
+import { EditableText } from "@/components/editor/Editable";
 
 const Steps = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { content } = useSiteContent();
+  const resolvedSteps = content.steps.items;
 
   return (
     <section id="steps" className="py-24 bg-background" ref={ref}>
@@ -22,11 +18,14 @@ const Steps = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-olive/10 text-olive font-body text-sm font-medium tracking-wider uppercase mb-4">
-            Процесс
-          </span>
+          <EditableText
+            path="steps.sectionLabel"
+            as="span"
+            value={content.steps.sectionLabel}
+            className="inline-block px-4 py-1.5 rounded-full bg-olive/10 text-olive font-body text-sm font-medium tracking-wider uppercase mb-4"
+          />
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground">
-            Этапы пересадки волос
+            <EditableText path="steps.title" as="span" value={content.steps.title} />
           </h2>
         </motion.div>
 
@@ -34,7 +33,7 @@ const Steps = () => {
           {/* Vertical line */}
           <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px" />
 
-          {steps.map((step, i) => (
+          {resolvedSteps.map((step, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
@@ -46,14 +45,18 @@ const Steps = () => {
             >
               {/* Number circle */}
               <div className="absolute left-8 md:left-1/2 -translate-x-1/2 w-16 h-16 rounded-full bg-olive-gradient flex items-center justify-center z-10 shadow-warm">
-                <span className="text-primary-foreground font-display font-bold text-lg">{step.num}</span>
+                <EditableText path={`steps.items.${i}.num`} as="span" value={step.num} className="text-primary-foreground font-display font-bold text-lg" />
               </div>
 
               {/* Content */}
               <div className={`ml-28 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-20 md:text-right" : "md:pl-20"}`}>
                 <div className="bg-card rounded-2xl p-6 shadow-warm border border-border">
-                  <h3 className="text-xl font-display font-bold text-foreground mb-2">{step.title}</h3>
-                  <p className="text-muted-foreground font-body">{step.desc}</p>
+                  <h3 className="text-xl font-display font-bold text-foreground mb-2">
+                    <EditableText path={`steps.items.${i}.title`} as="span" value={step.title} />
+                  </h3>
+                  <p className="text-muted-foreground font-body">
+                    <EditableText path={`steps.items.${i}.desc`} as="span" value={step.desc} />
+                  </p>
                 </div>
               </div>
             </motion.div>
