@@ -13,6 +13,7 @@ import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import Contacts from "@/components/Contacts";
 import Videos from "@/components/Videos";
+import SeoContent from "@/components/SeoContent";
 
 const Index = () => {
   return (
@@ -28,6 +29,7 @@ const Index = () => {
       <Team />
       <Reviews />
       <Videos />
+      <SeoContent />
       <FAQ />
       <Contacts />
       <CTASection />
