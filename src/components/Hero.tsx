@@ -85,6 +85,9 @@ const Hero = () => {
             path="hero.heroImageSrc"
             src={content.hero.heroImageSrc}
             alt={content.hero.heroImageAlt}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover brightness-[1.03] contrast-[1.08] saturate-[1.05]"
           />
         </div>

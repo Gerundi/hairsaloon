@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { useSiteContent } from "@/contexts/SiteContentContext";
 import { EditableImage, EditableLink, EditableText } from "@/components/editor/Editable";
 
@@ -8,6 +8,12 @@ const BeforeAfter = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const { content } = useSiteContent();
   const beforeAfterImages = content.beforeAfter.images;
+  const INITIAL_ITEMS = 9;
+  const [showAll, setShowAll] = useState(false);
+  const visibleImages = useMemo(
+    () => (showAll ? beforeAfterImages : beforeAfterImages.slice(0, INITIAL_ITEMS)),
+    [beforeAfterImages, showAll],
+  );
 
   return (
     <section id="before-after" className="py-24 bg-background" ref={ref}>
@@ -32,39 +38,37 @@ const BeforeAfter = () => {
           </p>
         </motion.div>
 
-        {/* Desktop / tablet layout */}
-        <div className="hidden md:block">
-          <div className="grid grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {beforeAfterImages.map((img, i) => (
-              <motion.div
-                key={img.src}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
-              >
-                <EditableImage path={`beforeAfter.images.${i}.src`} src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
-              </motion.div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {visibleImages.map((img, i) => (
+            <motion.div
+              key={img.src}
+              initial={{ opacity: 0, y: 30 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: i * 0.04 }}
+              className="rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
+            >
+              <EditableImage
+                path={`beforeAfter.images.${i}.src`}
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto object-cover"
+              />
+            </motion.div>
+          ))}
         </div>
-
-        {/* Mobile slider */}
-        <div className="md:hidden -mx-6">
-          <div className="flex gap-4 px-6 pb-4 overflow-x-auto snap-x snap-mandatory before-after-scroll">
-            {beforeAfterImages.map((img, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="snap-center min-w-[80%] rounded-2xl overflow-hidden border border-border shadow-warm bg-card"
-              >
-                <EditableImage path={`beforeAfter.images.${i}.src`} src={img.src} alt={img.alt} className="w-full h-auto object-cover" />
-              </motion.div>
-            ))}
+        {!showAll && beforeAfterImages.length > INITIAL_ITEMS && (
+          <div className="text-center mt-8">
+            <button
+              type="button"
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-border bg-background text-foreground font-body font-semibold hover:bg-secondary transition-colors"
+            >
+              Показать еще результаты
+            </button>
           </div>
-        </div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

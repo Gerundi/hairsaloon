@@ -49,6 +49,8 @@ const Videos = () => {
                 src={src}
                 title={`Видео клиента ${index + 1}`}
                 className="w-full aspect-[9/16]"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allow="autoplay; fullscreen; clipboard-write; encrypted-media; picture-in-picture"
                 allowFullScreen
               />
@@ -76,6 +78,8 @@ const Videos = () => {
                 src={src}
                 title={`Видео клиента ${index + 3}`}
                 className="w-full aspect-video"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allow="autoplay; fullscreen; clipboard-write; encrypted-media; picture-in-picture"
                 allowFullScreen
               />

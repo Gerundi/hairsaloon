@@ -80,10 +80,26 @@ type EditableImageProps = {
   src: string;
   alt: string;
   className?: string;
+  loading?: "lazy" | "eager";
+  decoding?: "async" | "auto" | "sync";
+  fetchPriority?: "high" | "low" | "auto";
+  width?: number;
+  height?: number;
   onClick?: (event: MouseEvent<HTMLImageElement>) => void;
 };
 
-export const EditableImage = ({ path, src, alt, className, onClick }: EditableImageProps) => {
+export const EditableImage = ({
+  path,
+  src,
+  alt,
+  className,
+  loading = "lazy",
+  decoding = "async",
+  fetchPriority = "auto",
+  width,
+  height,
+  onClick,
+}: EditableImageProps) => {
   const { editorEnabled, selectedPath, setSelectedPath } = useSiteContent();
   const isSelected = editorEnabled && selectedPath === path;
 
@@ -91,6 +107,11 @@ export const EditableImage = ({ path, src, alt, className, onClick }: EditableIm
     <img
       src={src}
       alt={alt}
+      loading={loading}
+      decoding={decoding}
+      fetchPriority={fetchPriority}
+      width={width}
+      height={height}
       className={[className ?? "", editorEnabled ? hoverClass : "", isSelected ? editorClass : ""].join(" ").trim()}
       onClick={(event) => {
         onClick?.(event);
