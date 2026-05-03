@@ -1,6 +1,13 @@
 {
   "files": [],
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
+  "exclude": [
+    "server",
+    "api",
+    "scripts",
+    "dist",
+    "node_modules"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
