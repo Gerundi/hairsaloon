@@ -11,7 +11,8 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center bg-transparent">
       <div className="container mx-auto px-6 py-24 md:py-28 lg:py-32 grid gap-10 lg:gap-8 lg:grid-cols-2 items-center">
         {/* Left: content */}
-        <div className="max-w-xl lg:max-w-none min-w-0">
+        <div className="relative z-10">
+          <div className="max-w-xl lg:max-w-none min-w-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -77,10 +78,11 @@ const Hero = () => {
               <EditableText path="hero.freeConsultText" as="span" value={content.hero.freeConsultText} />
             </EditableLink>
           </motion.div>
+          </div>
         </div>
 
         {/* Right: image */}
-        <div className="relative h-[360px] md:h-[460px] lg:h-[520px] xl:h-[560px] rounded-3xl overflow-hidden shadow-warm bg-muted min-w-0 w-full">
+        <div className="relative h-[360px] md:h-[460px] lg:h-[520px] xl:h-[560px] rounded-3xl overflow-hidden shadow-warm bg-muted min-w-0 w-full z-0">
           <EditableImage
             path="hero.heroImageSrc"
             src={content.hero.heroImageSrc}
@@ -88,7 +90,7 @@ const Hero = () => {
             loading="eager"
             fetchPriority="high"
             decoding="async"
-            className="w-full h-full object-cover brightness-[1.03] contrast-[1.08] saturate-[1.05]"
+            className="w-full h-full object-cover pointer-events-none brightness-[1.03] contrast-[1.08] saturate-[1.05]"
           />
         </div>
 
@@ -97,7 +99,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="md:col-span-2 mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 bg-card rounded-2xl p-6 shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-border"
+          className="relative z-10 md:col-span-2 mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 bg-card rounded-2xl p-6 shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-border"
         >
           {stats.map((stat, i) => (
             <div key={i} className="text-center">
