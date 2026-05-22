@@ -16,6 +16,10 @@ public/videos/
 .env.*
 !.env.example
 
+# Локальные секреты для PHP-отправки в Telegram (рядом с public/telegram.php)
+public/telegram.local.php
+public/.lead-rate/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import PromoBanner from "@/components/PromoBanner";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
@@ -19,6 +20,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#fdf6e3,_#f3e2c5)]">
       <Navbar />
+      <PromoBanner variant="sticky" />
       <Hero />
       <About />
       <Services />

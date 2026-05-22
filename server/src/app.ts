@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import { authRouter } from "./routes/auth";
 import { contentRouter } from "./routes/content";
+import { leadsRouter } from "./routes/leads";
 
 export const createApp = async () => {
   const frontendOrigins = (process.env.FRONTEND_ORIGIN ?? "http://localhost:8080")
@@ -38,6 +39,7 @@ export const createApp = async () => {
     res.json({ ok: true });
   });
 
+  app.use("/api/leads", leadsRouter);
   app.use("/api/auth", authRouter);
   app.use("/api", contentRouter);
 

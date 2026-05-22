@@ -17,6 +17,9 @@ const Footer = () => {
             <p className="text-background/60 font-body leading-relaxed">
               {content.footer.description}
             </p>
+            <p className="mt-2 text-background/45 font-body font-light text-sm">
+              ООО "Многопрофильный медицинский центр "3А""
+            </p>
             {instagramUrl ? (
               <div className="mt-6">
                 <a

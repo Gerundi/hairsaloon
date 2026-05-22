@@ -1,4 +1,12 @@
 export const defaultSiteContent = {
+  promo: {
+    enabled: true,
+    badge: "Акция — запись на июль",
+    title: "160 000 ₽ вместо 250 000 ₽",
+    subtitle: "При записи на операцию в июле — фиксированная цена по акции",
+    ctaText: "Записаться по акции",
+    ctaHref: "#calculator",
+  },
   navbar: {
     brandTitle: "Клиника пересадки волос",
     brandSubtitle: "MediHairTour",
@@ -130,23 +138,23 @@ export const defaultSiteContent = {
     ],
   },
   calculator: {
-    sectionBadge: "Скидка 5% за прохождение опроса",
-    title: "Рассчитаем стоимость",
-    subtitle: "за 15 минут",
+    sectionBadge: "Акция на июль: 160 000 ₽ вместо 250 000 ₽",
+    title: "Короткий опрос",
+    subtitle: "Ответьте на вопросы и оставьте номер — перезвоним и зафиксируем цену по акции",
     phoneDisplay: "+7 (988) 736 41 00",
     phoneE164: "79887364100",
     introMessage: "Здравствуйте! Хочу консультацию по пересадке волос.",
     answerListTitle: "Ответы теста:",
-    finalTitle: "Готово! Напишите нам",
-    finalDescription: "Выберите мессенджер — сообщение с вашими ответами уже подготовлено.",
+    finalTitle: "Спасибо!",
+    finalDescription: "Заявка отправлена. Мы перезвоним вам в ближайшее время.",
     telegramText: "Telegram",
     whatsappText: "WhatsApp",
     maxText: "Max",
     maxUrl: "https://max.ru/",
     phoneCaption: "Контактный номер:",
     messengerHint: "Для Telegram и Max мы автоматически копируем текст — просто вставь его в чат.",
-    finalFormTitle: "Готово! Оставьте номер телефона для связи",
-    finalFormButton: "Узнать результат",
+    finalFormTitle: "Оставьте номер телефона для связи",
+    finalFormButton: "Отправить",
     privacyText: "Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности",
     questions: [
       {
@@ -157,7 +165,7 @@ export const defaultSiteContent = {
       {
         key: "gender",
         title: "Укажите ваш пол",
-        options: ["Мужчина", "Женщина"],
+        options: ["Мужской", "Женский", "Предпочитаю не указывать"],
       },
       {
         key: "previous",
